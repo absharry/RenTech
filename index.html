@@ -36,21 +36,16 @@
           </ul>
             <form class="budgetForm col-md-10" onsubmit="event.preventDefault(); showBudget();">
                 <div class="col-md-4" id='household'>
-                    <label for="numberInHousehold">Number in Household:</label>
+                    <label for="numberInHousehold">Number in Household : <span id="householdValue">4</span></label>
                     <input type="range" min="1" max="8" value="4" id="numberInHousehold" step="1" oninput="outputUpdateHousehold(value)">
-                    <output for="numberInHousehold" id="householdValue">4</output>
                 </div>
                 <div class="col-md-4" id='individualBudget'>
-                    <label for="perPersonBudget">Budget Per Person</label>
-                    <input type="range" min="0" max="40" value="20" id="perPersonBudget" step="5" oninput="outputUpdateBudget(value)">
-                    <output for="perPersonBudget" id="budget">20</output>
+                    <label for="perPersonBudget">Budget Per Person : £<span id="budget">20.00</span></label> 
+                    <input type="range" min="5" max="40" value="20" id="perPersonBudget" step="5" oninput="outputUpdateBudget(value)">
                 </div>
                 <div class="col-md-2" id="budgetAvailable"></div>
 				<div id="progressbar"></div>
             </form>
-          <ul class="nav navbar-nav navbar-right col-md-1">
-            <li>Log in</li>
-          </ul>
         </div>
     <div class="container">
 

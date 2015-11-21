@@ -75,7 +75,7 @@ var compare = function (a,b){
 }
 
 var outputUpdateBudget = function(val){
-    $('#budget').text(val);
+    $('#budget').text(val + ".00");
     showBudget();
 }
 
@@ -88,21 +88,21 @@ var itemTemplate = function (item) {
     var detailString = "";
     var price = item.PricePerMonth ? item.PricePerMonth : item.PricePerWeek * 4;
     for (var detail of item.Details) {
-        detailString += ("<li>" + detail + "</li>");
+        detailString += ("<li><span>" + detail + "</span></li>");
     }
 
     return "<div class='item row'>" +
         "<img class='col-md-2' src=imgs/" + item.ImageURL + ">" +
-        "<div class='col-md-1' id='companyLogo'>" + item.Company + "</div>" +
+        "<div class='col-md-1' id='companyLogo'><img src='imgs/hughes.jpg'></div>" +
         "<div class='col-md-6' id='nameDescription'>" +
-        "Name: " + item.Name + "<br/>" +
-        "Description: " + item.LongDescription + "<br/>" +
-        "Details: " + "<br/>" +
+         "<strong>" + item.Name + "</strong><br/>" +
+         item.LongDescription + "<br/>" +
+         "<br/>" +
         "<ul>" + detailString + "</ul>" +
         "</div>" +
-        "<div class='col-md-2' id='priceContract'>" +
-        "Contract Length:" + item.ContractLengthMonths + "<br/>" +
-        "Price: £" + price + " per month</br>" +
+        "<div class='col-md-2' id='priceContract'><p id='contract'><span>" +
+         item.ContractLengthMonths + "</span><br> month plan</p>" +
+        "<p id='pricePerMonth'><span>£" + price.toFixed(2) + "</span><br> per month</p>" +
         "</div>" +
         "<div class='col-md-1' id='chosenProduct'>" +
         "<input type='checkbox' onclick='onCheck(" + price + ",this)'>" + 
@@ -130,7 +130,7 @@ $(showBudget = function () {
 		$( "#progressbar" ).progressbar( "option", "value", currentPrice );
 	}
 
-    $("#budgetAvailable").text('£' + totalBudget.toFixed(2) + ' per month');
+    $("#budgetAvailable").html('<span>£' + totalBudget.toFixed(2) + '</span><br>per month');
 })
 
 $(function() {

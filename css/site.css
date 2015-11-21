@@ -1,46 +1,117 @@
-body{
-    background-color:#265076;
+body {
+    color: #bd4c2c;
 }
-.budgetForm{
-    margin-top:20px;
+
+a {
+    color: #bd4c2c;
 }
-.tab-content{
-    height: 400px;
+
+.budgetForm {
+    margin-top: 20px;
+}
+
+.tab-content {
+    height: 480px;
     overflow-y: scroll;
     overflow-x: hidden;
     background-color: #fff;
+    border-left: 1px solid lightgrey;
 }
-.budgetForm .form-group{
+
+.budgetForm .form-group {
     width: 100%;
 }
-.item{
+
+.item {
     padding-top: 20px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #265076;
+    color:#000;
 }
-.logo{
+
+.logo {
     float: right;
 }
-.logo img{
+
+.logo img {
     height: 100px;
 }
-.form-group select, .form-group input{
+
+.form-group select,
+.form-group input {
     float: right;
     width: 50px !important;
 }
-.nav-tabs>li{
-        float: left;
+
+.nav-tabs>li {
+    float: left;
     margin-bottom: -1px;
     background: white;
-    border: 2px solid #000;
+    border: 2px solid #265076;
     border-bottom: none;
     border-left: none;
     border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-right-radius: 5px;    
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #fff;
 }
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
-    background-color:lightgrey;    
-    margin:0;
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>li.active>a:hover {
+    background-color: #265076;
+    margin: 0;
+    color: #fff;
+    border: none;
 }
-#navbar{
+
+#navbar {
     background-color: white;
+    margin-bottom: 25px;
+    border-bottom: 5px solid #265076;
+    box-shadow: 0 0 10px 0;
+}
+
+#budgetAvailable {
+    font-weight: bold;
+    text-align: center;
+    margin-top: -12px;
+}
+
+#budgetAvailable span{
+    font-size:40px;
+}
+
+#companyLogo {
+    margin-top: 50px;
+}
+ul li{
+    color: #bd4c2c;
+}
+ul li span{
+    color: #000;
+}
+#priceContract{
+    font-size: 20px;
+    color: #bd4c2c;
+    font-weight: bold;
+    margin-top: 30px;
+    text-align:center;
+    padding:0;
+}
+#priceContract p{
+    float: left;
+    width: 50%;
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #f9fed2;
+}
+#priceContract p span{
+    font-size:25px;
+}
+#priceContract p#contract{
+    background-color: #265076;
+}
+#priceContract p#pricePerMonth{
+    background-color: #bd4c2c;
 }
