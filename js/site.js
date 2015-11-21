@@ -72,6 +72,16 @@ var compare = function (a,b){
     return 0;
 }
 
+var outputUpdateBudget = function(val){
+    $('#budget').text(val);
+    showBudget();
+}
+
+var outputUpdateHousehold = function(val){
+    $('#householdValue').text(val);
+    showBudget();
+}
+
 var itemTemplate = function (item) {
     var detailString = "";
     var price = item.PricePerMonth ? item.PricePerMonth : item.PricePerWeek * 4;

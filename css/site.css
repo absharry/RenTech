@@ -2,7 +2,7 @@ body{
     background-color:#265076;
 }
 .budgetForm{
-    padding-bottom:50px;
+    margin-top:20px;
 }
 .tab-content{
     height: 400px;
@@ -16,13 +16,6 @@ body{
 .item{
     padding-top: 20px;
     border-bottom: 2px solid black;
-}
-.budgetForm>div:first-child{
-    border: 2px solid #000;
-    border-radius: 15px;
-    padding: 20px;
-    margin-top: 25px;
-    background-color: #fff;
 }
 .logo{
     float: right;
