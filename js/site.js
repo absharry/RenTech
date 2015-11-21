@@ -9,6 +9,8 @@ var speakers = [];
 var consoles = [];
 var computing = [];
 
+var progressBarReady = false;
+
 firebaseRef.once("value", function (data) {
     var items = data.val();
     for (var item of items) {
@@ -121,6 +123,21 @@ $(showBudget = function () {
     var perPerson = $("#perPersonBudget").val();
 
     totalBudget = (noOfPeople * perPerson) - currentPrice;
+	
+	if(progressBarReady)
+	{
+		$( "#progressbar" ).progressbar( "option", "max", totalBudget );
+		$( "#progressbar" ).progressbar( "option", "value", currentPrice );
+	}
 
     $("#budgetAvailable").text('£' + totalBudget.toFixed(2) + ' per month');
 })
+
+$(function() {
+	$( "#progressbar" ).progressbar({
+		value: 0,
+		max: 100
+	});
+	
+	progressBarReady = true;
+});
