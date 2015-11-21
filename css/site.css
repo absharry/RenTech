@@ -1,23 +1,53 @@
+body{
+    background-color:#265076;
+}
 .budgetForm{
-    padding:50px 15px;
+    padding-bottom:50px;
 }
 .tab-content{
     height: 400px;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: #fff;
 }
 .budgetForm .form-group{
     width: 100%;
 }
 .item{
     padding-top: 20px;
+    border-bottom: 2px solid black;
 }
-.budgetForm>div{
-    border: 2px solid #bd4c2c;
+.budgetForm>div:first-child{
+    border: 2px solid #000;
     border-radius: 15px;
     padding: 20px;
+    margin-top: 25px;
+    background-color: #fff;
+}
+.logo{
+    float: right;
+}
+.logo img{
+    height: 100px;
 }
 .form-group select, .form-group input{
     float: right;
     width: 50px !important;
+}
+.nav-tabs>li{
+        float: left;
+    margin-bottom: -1px;
+    background: white;
+    border: 2px solid #000;
+    border-bottom: none;
+    border-left: none;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    background-color:lightgrey;    
+    margin:0;
+}
+#navbar{
+    background-color: white;
 }
