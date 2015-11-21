@@ -1,0 +1,23 @@
+.budgetForm{
+    padding:50px 15px;
+}
+.tab-content{
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.budgetForm .form-group{
+    width: 100%;
+}
+.item{
+    padding-top: 20px;
+}
+.budgetForm>div{
+    border: 2px solid #bd4c2c;
+    border-radius: 15px;
+    padding: 20px;
+}
+.form-group select, .form-group input{
+    float: right;
+    width: 50px !important;
+}

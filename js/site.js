@@ -3,6 +3,7 @@ var firebaseRef = new Firebase("https://rentech.firebaseio.com/");
 var totalBudget = 0;
 
 var showBudget;
+var currentPrice = 0;
 var televisions = [];
 var speakers = [];
 var consoles = [];
@@ -34,50 +35,82 @@ firebaseRef.once("value", function (data) {
 });
 
 var buildItemList = function () {
-    for (var television of televisions){
+    televisions = televisions.sort(compare);
+    speakers = speakers.sort(compare);
+    consoles = consoles.sort(compare);
+    computing = computing.sort(compare);
+    for (var television of televisions) {
         var template = itemTemplate(television);
         $('#television').append(template);
     }
-    
-    for (var speaker of speakers){
+
+    for (var speaker of speakers) {
         var template = itemTemplate(speaker);
         $('#speakers').append(template);
     }
-    
-    for (var console of consoles){
+
+    for (var console of consoles) {
         var template = itemTemplate(console);
         $('#consoles').append(template);
     }
-    
-    for (var computer of computing){
+
+    for (var computer of computing) {
         var template = itemTemplate(computer);
         $('#computing').append(template);
     }
 };
 
+var compare = function (a,b){
+    var comparison = a.PricePerWeek - b.PricePerWeek;
+    
+    if (comparison < 0){
+        return -1;
+    }
+    if ( comparison > 0){
+        return 1;
+    }
+    return 0;
+}
+
 var itemTemplate = function (item) {
-    var detailString = [];
+    var detailString = "";
     var price = item.PricePerMonth ? item.PricePerMonth : item.PricePerWeek * 4;
     for (var detail of item.Details) {
-        detailString.push("<li>" + detail + "</li>");
+        detailString += ("<li>" + detail + "</li>");
     }
 
-    return "<div class='item'>" +
+    return "<div class='item row'>" +
+        "<img class='col-md-2' src=imgs/" + item.ImageURL + ">" +
+        "<div class='col-md-1' id='companyLogo'>" + item.Company + "</div>" +
+        "<div class='col-md-6' id='nameDescription'>" +
         "Name: " + item.Name + "<br/>" +
-        "Company: " + item.Company + "<br/>" +
-        "Contract Length:" + item.ContractLengthMonths + "<br/>" +
+        "Description: " + item.LongDescription + "<br/>" +
         "Details: " + "<br/>" +
         "<ul>" + detailString + "</ul>" +
-        "Image: <img src=imgs/" + item.ImageURL + "> <br/>" +
-        "Description: " + item.LongDescription + "<br/>"+
-        "Price: " + price + "</br>";
+        "</div>" +
+        "<div class='col-md-2' id='priceContract'>" +
+        "Contract Length:" + item.ContractLengthMonths + "<br/>" +
+        "Price: £" + price + " per month</br>" +
+        "</div>" +
+        "<div class='col-md-1' id='chosenProduct'>" +
+        "<input type='checkbox' onclick='onCheck(" + price + ",this)'>" + 
+"</div>";
+}
+
+var onCheck = function (price, checkbox) {
+    if (checkbox.checked) {
+        currentPrice += price;
+    } else {
+        currentPrice -= price;        
+    }
+    showBudget();
 }
 
 $(showBudget = function () {
     var noOfPeople = $("#numberInHousehold").val();
     var perPerson = $("#perPersonBudget").val();
 
-    totalBudget = noOfPeople * perPerson;
+    totalBudget = (noOfPeople * perPerson) - currentPrice;
 
-    $("#budgetAvailable").text('£' + totalBudget + ' per month');
+    $("#budgetAvailable").text('£' + totalBudget.toFixed(2) + ' per month');
 })
